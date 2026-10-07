@@ -1,5 +1,2 @@
 <?php
-
-header('HTTP/1.1 500 Internal Server Error');
-echo "Intentional test error";
-exit;
+echo "PROCESS TEST";
