@@ -1,4 +1,5 @@
 <?php
 
-http_response_code(500);
-die("Intentional test error");
+header('HTTP/1.1 500 Internal Server Error');
+echo "Intentional test error";
+exit;
