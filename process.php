@@ -6,6 +6,6 @@ file_put_contents(
     FILE_APPEND
 );
 
-http_response_code(500);
+header("HTTP/1.1 500 Internal Server Error");
 echo "Intentional test error";
 exit;
