@@ -1,11 +1,22 @@
 <?php
 
-file_put_contents(
-    "/home/LogFiles/process.log",
-    date("c") . " process.php called\n",
-    FILE_APPEND
-);
+// increase execution time
+set_time_limit(0);
 
-header("HTTP/1.1 500 Internal Server Error");
-echo "Intentional test error";
-exit;
+//Retrieve query parameters
+$maxImages = $_GET['images'];
+$imgNames  = explode(",",$_GET['imgNames']);
+
+//Load JPEGs into an array (in memory)
+for ($x=0; $x<$maxImages; $x++){
+    $imgArray[$x] = imagecreatefromjpeg("./images/" . $imgNames[$x]);
+    
+}
+
+//Loop through array and convert each JPEG to PNG
+if ($imgArray) {
+  for ($x=0; $x<$maxImages; $x++){
+    $filename = './images/converted_' . substr($imgNames[$x],0,-4) . '.png';
+    imagepng($imgArray[$x], $filename);
+  }
+}
