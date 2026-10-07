@@ -1,8 +1,7 @@
+PHP
 <?php
-
+ 
 ini_set('display_errors', 1);
 error_reporting(E_ALL);
-
-echo "<pre>";
-print_r($_GET);
-echo "</pre>";
+ 
+undefined_function_for_testing();
